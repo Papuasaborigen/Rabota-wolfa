@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Распределение обязанностей</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ios-timepicker.css" />
+  </head>
+  <body>
+    <div id="page-root">
+    <header class="app-header">
+      <h1 class="wolf-title wolf-title-big">
+        Работа не волк
+        <span class="wolf-tail" aria-hidden="true"></span>
+      </h1>
+    </header>
+
+    <main class="container" role="main">
+      <section class="panel">
+        <h2>Смена</h2>
+        <div style="display:flex; gap:8px; align-items:center; margin-bottom:16px;">
+          <label for="shift-select" style="font-size:15px; color:var(--muted);">Смена:</label>
+          <select id="shift-select"></select>
+          <button id="shift-add-btn" class="btn" type="button">Добавить смену</button>
+        </div>
+
+        <h2>Сотрудники</h2>
+        <form id="employee-form" class="form-row form-row-emp" autocomplete="off">
+          <label class="field">
+            <span>Имя</span>
+            <input id="employee-name" type="text" placeholder="Например: Анна" required />
+          </label>
+          <label class="field">
+            <span>Навык</span>
+            <div class="range">
+              <input id="employee-skill" type="range" min="1" max="10" value="6" />
+              <output id="employee-skill-out">6</output>
+            </div>
+          </label>
+          <label class="field">
+            <span>Начало (НСК)</span>
+            <input id="employee-start" type="text" value="09:00" />
+          </label>
+          <label class="field">
+            <span>Окончание (НСК)</span>
+            <input id="employee-end" type="text" value="18:00" />
+          </label>
+          <button type="submit" class="btn">Добавить</button>
+        </form>
+
+        <ul id="employee-list" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Обязанности</h2>
+        <form id="task-form" class="form-row" autocomplete="off">
+          <label class="field">
+            <span>Название</span>
+            <input id="task-title" type="text" placeholder="Например: Отчет по продажам" required />
+          </label>
+          <label class="field">
+            <span>Сложность</span>
+            <div class="range">
+              <input id="task-difficulty" type="range" min="1" max="10" value="5" />
+              <output id="task-difficulty-out">5</output>
+            </div>
+          </label>
+          <label class="field">
+            <span>Категория</span>
+            <select id="task-category"></select>
+          </label>
+          <button type="submit" class="btn">Добавить</button>
+        </form>
+
+        <ul id="task-list" class="list"></ul>
+
+        <div class="divider" style="height:1px; background:var(--border); margin:12px 0;"></div>
+        <h3 style="margin:0 0 8px; font-size:14px; color:var(--muted);">Категории</h3>
+        <form id="category-form" class="form-row" autocomplete="off" style="grid-template-columns: 1fr auto auto;">
+          <label class="field">
+            <span>Название категории</span>
+            <input id="category-name" type="text" placeholder="Например: Почасовые" />
+          </label>
+          <label class="field" style="align-self:center;">
+            <span>Почасовая</span>
+            <input id="category-hourly" type="checkbox" />
+          </label>
+          <button type="submit" class="btn">Добавить</button>
+        </form>
+        <ul id="category-list" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Настройки распределения</h2>
+        <div class="settings">
+          <label class="field full">
+            <span>Вес недостатка навыка</span>
+            <div class="range">
+              <input id="weight-skill" type="range" min="1" max="25" value="10" />
+              <output id="weight-skill-out">10</output>
+            </div>
+          </label>
+          <label class="field full">
+            <span>Вес текущей нагрузки</span>
+            <div class="range">
+              <input id="weight-load" type="range" min="0" max="10" value="1" />
+              <output id="weight-load-out">1</output>
+            </div>
+          </label>
+          <label class="field full">
+            <span>Вес превышения смены</span>
+            <div class="range">
+              <input id="weight-capacity" type="range" min="0" max="25" value="6" />
+              <output id="weight-capacity-out">6</output>
+            </div>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button id="assign-btn" class="btn primary">Распределить</button>
+          <button id="export-btn" class="btn" title="Экспорт в текстовый файл">Экспорт TXT</button>
+          <button id="clear-btn" class="btn danger" title="Очистить все списки">Сбросить</button>
+        </div>
+      </section>
+
+      <section class="panel full-width">
+        <h2>Результат</h2>
+        <div class="result-actions">
+          <button id="export-btn-top" class="btn" title="Экспорт в текстовый файл">Экспорт TXT</button>
+        </div>
+        <div id="result" class="result-grid"></div>
+      </section>
+
+      <section id="history-block" class="panel full-width"></section>
+    </main>
+
+  <footer class="footer">
+  </footer>
+    </div>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="firebase-app.js"></script>
+  <script src="firebase-database.js"></script>
+  <script src="ios-timepicker.js"></script>
+  <script src="app.js"></script>
+  </body>
+  </html>

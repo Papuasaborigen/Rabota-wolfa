@@ -1,0 +1,19 @@
+/* Копия на 16.08.2025 */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+    padding: 0;
+  }
+  /* ...existing code... */
+}
+:root {
+  --bg: #0f0a05;
+  --panel: #1a140d;
+  --text: #f2e7dc;
+  --muted: #c8b8a9;
+  --accent: #ff8a00;
+  --accent-2: #ffd166;
+  --danger: #f85149;
+  --border: #3a2a1f;
+}
+/* ...existing code... */

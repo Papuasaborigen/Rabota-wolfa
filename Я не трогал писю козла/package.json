@@ -1,0 +1,17 @@
+{
+  "name": "duty-assigner",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:update": "playwright test --update-snapshots",
+    "install:pw": "npx --yes playwright install --with-deps"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "playwright": "^1.45.3",
+    "http-server": "^14.1.1"
+  }
+}
+
+

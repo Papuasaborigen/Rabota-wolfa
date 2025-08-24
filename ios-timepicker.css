@@ -1,0 +1,48 @@
+.ios-timepicker-popup {
+  z-index: 9999;
+  background: rgba(30, 20, 20, 0.98);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.18);
+  padding: 16px 12px 12px 12px;
+  min-width: 220px;
+}
+.ios-timepicker {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.ios-timepicker-list {
+  max-height: 180px;
+  overflow-y: auto;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 4px 0;
+  width: 60px;
+  text-align: center;
+}
+.ios-timepicker-item {
+  font-size: 22px;
+  color: #f2e7dc;
+  padding: 6px 0;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.ios-timepicker-item.selected {
+  background: #ff8a00;
+  color: #1a140d;
+  font-weight: bold;
+}
+.ios-timepicker-ok {
+  width: 100%;
+  padding: 8px 0;
+  background: #ff8a00;
+  color: #1a140d;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
